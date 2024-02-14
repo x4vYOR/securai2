@@ -1,5 +1,4 @@
-
-import { Mapper } from "../../base/utils/mapper";
+import { Mapper } from "../../../base/utils/mapper";
 import { UserModel } from "../../domain/models/user.model";
 import { UserEntity } from "../entities/user-entity";
 

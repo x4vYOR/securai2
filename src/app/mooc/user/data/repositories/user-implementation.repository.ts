@@ -13,18 +13,23 @@ import { UserRepositoryMapperImplementation } from "../mappers/user-repository.m
 export class UserRepositoryImplementation extends UserRepository {
 
     userMapper = new UserRepositoryMapperImplementation();
+    override _isLoggedIn: boolean = false;
 
     constructor(private http: HttpClient) {
         super();
     }
 
-    override login(params: { username: string; password: string; }): Observable<UserModel> {
+    override login(params: { email: string; password: string; }): Observable<UserModel> {
         return this.http.post<UserEntity>('http://example.com/login', {params})
             .pipe(
                 map(
                     this.userMapper.mapFrom
                 )
             );
+    }
+
+    override loginGoogle(): Observable<UserModel> {
+        return new Observable();
     }
 
     override register(params: { email: string; username: string; password: string; }): Observable<UserModel> {
@@ -43,6 +48,10 @@ export class UserRepositoryImplementation extends UserRepository {
                     this.userMapper.mapFrom
                 )
             );
+    }
+
+    override logout(): Observable<void> {
+        return new Observable();
     }
     
 }
