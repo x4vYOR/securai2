@@ -1,16 +1,14 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AuthGuard } from './core/guards/auth.guard';
+import { SessionGuard } from './core/guards/session.guard';
 
 const routes: Routes = [
-  // Otras rutas principales de la aplicación,
-  // por ejemplo, una página de inicio, acerca de, etc.
-
-  // Puedes incluir rutas de los módulos de usuario y producto aquí
-  { path: 'auth', loadChildren: () => import('./mooc/user/user.module').then(m => m.UserModule) },
-  { path: '**', loadChildren: () => import('./mooc/pages/pages.module').then(m => m.PagesModule), canActivate: [AuthGuard] }
+  { path: 'auth', loadChildren: () => import('./mooc/auth/auth.module').then(m => m.AuthModule) },
+  { path: 'admin', loadChildren: () => import('./mooc/admin/admin.module').then(m => m.AdminModule), canActivate: [AuthGuard] },
+  { path: 'superadmin', loadChildren: () => import('./mooc/superadmin/superadmin.module').then(m => m.SuperadminModule), canActivate: [AuthGuard]  },
+  { path: '', loadChildren: () => import('./mooc/public/public.module').then(m => m.PublicModule) },
 ];
-
 
 @NgModule({
   imports: [

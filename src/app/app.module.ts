@@ -7,23 +7,31 @@ import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
 import { getAuth, provideAuth } from '@angular/fire/auth';
 import { environment } from '../environments/environment';
 import { AngularFireModule } from '@angular/fire/compat';
-import { UserModule } from './mooc/user/user.module';
-import { DashboardComponent } from './mooc/pages/dashboard/dashboard.component';
-import { PagesModule } from './mooc/pages/pages.module';
+import { NotFoundComponent } from './shared/not-found/not-found.component';
+import { ServerErrorComponent } from './shared/server-error/server-error.component';
+import { MaintenanceComponent } from './shared/maintenance/maintenance.component';
+import { AdminModule } from './mooc/admin/admin.module';
+import { SuperadminModule } from './mooc/superadmin/superadmin.module';
+import { SharedModule } from './shared/shared.module';
+import { AuthModule } from './mooc/auth/auth.module';
 
 @NgModule({
   declarations: [
     AppComponent,
-    DashboardComponent
+    NotFoundComponent,
+    ServerErrorComponent,
+    MaintenanceComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    AdminModule,
+    SuperadminModule,
+    AuthModule,
+    SharedModule,
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideAuth(() => getAuth()),
     AngularFireModule.initializeApp(environment.firebase),
-    UserModule,
-    PagesModule
   ],
   providers: [
     provideClientHydration()

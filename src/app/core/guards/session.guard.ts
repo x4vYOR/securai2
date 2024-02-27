@@ -5,16 +5,16 @@ import { UserRepository } from "../../mooc/auth/user/domain/repositories/user.re
 @Injectable({
   providedIn: 'root'
 })
-export class AuthGuard implements CanActivate {
+export class SessionGuard implements CanActivate {
 
   constructor(private userRepository: UserRepository, private router: Router) {}
 
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
     if (this.userRepository.isLoggedIn) {
-      return true; 
+      this.router.navigate(["admin/dashboard"]); // El usuario si está autenticado, redirigir a la página de dashboard
+      return false; // El usuario está autenticado, permitir acceso a la ruta
     } else {
-      this.router.navigate(["/auth/login"]);
-      return false;
+      return true; // Si permitir acceso a la ruta
     }
   }
 }
