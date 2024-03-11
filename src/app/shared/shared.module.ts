@@ -10,6 +10,9 @@ import { DropdownComponent } from './components/dropdown/dropdown.component';
   ],
   imports: [
     CommonModule
+  ],
+  exports: [
+    DropdownComponent
   ]
 })
 export class SharedModule { }

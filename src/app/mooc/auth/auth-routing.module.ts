@@ -6,7 +6,7 @@ import { ForgotPasswordComponent } from './user/infra/auth/forgot-password/forgo
 import { SessionGuard } from '../../core/guards/session.guard';
 
 const routes: Routes = [
-  { path: 'login', component: LoginComponent},
+  { path: 'login', component: LoginComponent, canActivate: [SessionGuard]},
   { path: 'register', component: RegisterComponent, canActivate: [SessionGuard]},
   { path: 'forgot-password', component: ForgotPasswordComponent},
   { path: '', redirectTo: 'login', pathMatch: 'full' }

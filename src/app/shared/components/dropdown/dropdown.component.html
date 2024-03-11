@@ -1,5 +1,5 @@
 <div class="flex items-center ml-3">
-    <div>
+    <div (click)="toggleDropdown();">
         <ng-container *ngTemplateOutlet="buttonTemplate"></ng-container>
         <button *ngIf="!buttonTemplate" type="button" 
             class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
@@ -15,6 +15,7 @@
     <div class="z-50 hidden my-4 text-base list-none bg-white rounded shadow dark:bg-gray-700 " 
         [id]="menuId"
         [ngClass]="{ 'divide-y divide-gray-100 dark:divide-gray-600': headerTemplate }"
+        [attr.aria-labelledby]="buttonId"
     >
       <div *ngIf="headerTemplate" class="px-4 py-3" role="none">
         <ng-container *ngTemplateOutlet="headerTemplate"></ng-container>

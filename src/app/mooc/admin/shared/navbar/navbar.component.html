@@ -173,7 +173,30 @@
                 <div class="tooltip-arrow" data-popper-arrow></div>
             </div>
             <!-- Profile -->
-            
+            <app-dropdown [menuId]="'profile-menu-id'" [buttonId]="'profile-button-id'">  
+              <ng-template #buttonTemplate>
+                <button 
+                  type="button" 
+                  class="flex text-sm bg-gray-800 rounded-full focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600" id="profile-button-id" aria-expanded="false" [attr.data-dropdown-toggle]="'profile-menu-id'">
+                  <span class="sr-only">Open user menu</span>
+                  <img class="w-8 h-8 rounded-full" src="https://flowbite.com/docs/images/people/profile-picture-5.jpg" alt="user photo">
+                </button>
+              </ng-template>          
+              <ng-template #menuTemplate>
+                <li>
+                  <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white" role="menuitem">Dashboard</a>
+                </li>
+                <li>
+                  <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white" role="menuitem">Settings</a>
+                </li>
+                <li>
+                  <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white" role="menuitem">Earnings</a>
+                </li>
+                <li>
+                  <a (click)="logout()" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white" role="menuitem">Logout</a>
+                </li>
+              </ng-template>
+            </app-dropdown>
           </div>
       </div>
     </div>
